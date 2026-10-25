@@ -18,7 +18,7 @@
 
 ## 📌 Overview
 
-Weak-Cryptography Source Auditor
+OCryptScan — Weak-Cryptography Source Auditor. It provides crypto-focused static analyser (SAST) for source code and configuration — Python, Java/Kotlin, JavaScript/TypeScript, Go, PHP, C#, C/C++, Ruby, YAML / JSON / XML / INI / .env / properties. Operators can export results (including machine-readable formats) and gate CI with severity thresholds where supported.
 
 ---
 
@@ -30,14 +30,6 @@ Weak-Cryptography Source Auditor
 - Weak key sizes — RSA / DSA / DH < 2048, EC < 256, AES-128 informational, short HMAC keys
 - Insecure randomness in security context (random, Math.random, java.util.Random, rand, mt_rand ...)
 - Hardcoded keys / secrets / passwords / IVs / salts, embedded PEM private keys, entropy scoring
-- Weak password hashing — plain digests, missing bcrypt/scrypt/argon2/PBKDF2, low iteration counts, low bcrypt cost, static salts
-- Insecure TLS code — verify=False, InsecureSkipVerify, trust-all managers, NODE_TLS_REJECT_UNAUTHORIZED=0, SSLv2/SSLv3/TLS1.0/1.1 forced, weak cipher strings
-- Risky crypto APIs — unverified SSL contexts, Java Cipher.getInstance("AES") default ECB, PHP mcrypt, openssl_encrypt without IV, deprecated createCipher
-- JWT 'none' algorithm, disabled signature checks, weak HMAC secrets
-- CWE / OWASP / MITRE ATT&CK tags + concrete fix
-- A+ … F crypto-posture grade with category subscores
-- Inline '# nocrypt' suppression, allowlist, baseline
-- Export TXT / Markdown / JSON / CSV / SARIF 2.1.0
 
 ---
 
@@ -51,7 +43,10 @@ Weak-Cryptography Source Auditor
 ## 🚀 Usage
 
 ```bash
-./OCryptScan
+./OCryptScan                                     # interactive menu
+./OCryptScan --path ./config_or_ruleset
+./OCryptScan --json -o report.json
+./OCryptScan --help
 ```
 
 ---
